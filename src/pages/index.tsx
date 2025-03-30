@@ -1,11 +1,15 @@
-import Image from "next/image";
-import localFont from "next/font/local";
 import { Button } from "@/components/ui/button";
-
+import { ArticleMetadata, getAllArticles } from "@/lib/articles";
+import ArticleCard from "@/components/portfolio/ArticleCard";
+import { GetStaticProps } from "next";
 import { useSiteConfig } from "@/lib/useSiteConfig";
 import { useEffect } from "react";
 
-export default function Home() {
+interface HomeProps {
+  articles: ArticleMetadata[];
+}
+
+export default function Home({ articles }: HomeProps) {
   const { name } = useSiteConfig();
 
   useEffect(() => {
@@ -24,6 +28,17 @@ export default function Home() {
     <>
       <Button>Hello {name}</Button>
       <h1 className="m-auto w-24">Hello {name}</h1>
+      <ArticleCard articles={articles} />
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const articles = getAllArticles();
+  console.log(articles);
+  return {
+    props: {
+      articles,
+    },
+  };
+};
