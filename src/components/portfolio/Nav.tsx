@@ -1,4 +1,3 @@
-import styles from '@/styles/Portfolio/Nav.module.css'
 import {FC} from "react";
 
 type NavProps ={
@@ -12,29 +11,29 @@ type NavProps ={
 }
 
 export const Nav : FC<NavProps> = ({firstName, lastName , links, contact}) => {
-  return <nav className={`${styles.head} ${styles.nav}`}>
+  return <nav className="w-[900px] h-[60px] bg-[#2b2b40] my-[50px] mx-auto rounded-[30px] flex px-[8px] pl-10 items-center justify-between ">
             <FullName firstname={firstName} lastname={lastName} />
             <NavLinks links={links} />
             <Contact contact={contact} />
-         </nav>
+        </nav>
 }
 const FullName :FC<{firstname:string, lastname:string}> = ({firstname , lastname}) => (
-  <h1><b>{firstname}</b>  {lastname}</h1>
+  <h1 className="text-[20px] ml-10 text-[rgba(189,212,207,0.87)] font-extralight"><b className="text-[20px] text-white font-medium">{firstname}</b>  {lastname}</h1>
 )
 const NavLinks: FC<{links:Array<{
     name: string,
     href: string;
   }>}> = ({links}) => (
-<ul className={styles.links}>
-  {links.map(li => <li><a href={`#${li.href}`}>{li.name}</a></li>)}
+<ul className="flex gap-[30px]">
+  {links.map(li => <li><a className="text-[17px] text-[rgba(189,212,207,0.87)]" href={`#${li.href}`}>{li.name}</a></li>)}
 </ul>)
 
 const Contact: FC<{contact:{text: string, link: string}}> = ({contact}) =>{
 
     const getLogo = (link:string)=>{
-        if (link.startsWith("tel+")){
-            return "/images/phone";
-        }if(link.startsWith("mailto")){
+        if (link.startsWith("tel:")){
+            return "/images/phone.svg";
+        }else if(link.startsWith("mailto")){
             return "/images/email"
         }else{
             return "/images/whatsapp"
@@ -42,9 +41,9 @@ const Contact: FC<{contact:{text: string, link: string}}> = ({contact}) =>{
 
     }
 return  (
-    <a href={contact.link} className={styles.icon}>
-      <img src={getLogo(contact.link)} />
-      <p>{contact.text}</p>
+    <a href={contact.link} className="flex gap-2.5 py-[8px] px-[18px] bg-[rgb(71,71,177)] rounded-[26px] items-center">
+      <img className="h-[20px]" src={getLogo(contact.link)} />
+      <p className="m-0 text-[18px] text-white font-normal">{contact.text}</p>
     </a>
   )
 }

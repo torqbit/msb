@@ -43,3 +43,15 @@ export function getAllArticles(): ArticleMetadata[] {
     }
   });
 }
+
+export function getArticleBySlug(slug: string) {
+  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  return {
+    slug,
+    content,
+    ...(data as Omit<ArticleMetadata, "slug">),
+  };
+}

@@ -19,6 +19,16 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+.bg-gradient-text {
+  background: linear-gradient(to right, rgb(207, 206, 206), #444444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text {
+  background: linear-gradient(to right, #999 0%, #fff 50%, #999 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 @layer utilities {
   .text-balance {

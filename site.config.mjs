@@ -1,3 +1,5 @@
+//import { link } from "fs";
+
 export const siteConfig = {
   name: "My Site",
   description: "Welcome to my website",
@@ -8,10 +10,20 @@ export const siteConfig = {
     github: "https://github.com/aisha",
   },
   talks: ["https://youtube.com/watch?v=293939"],
-  nav: [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
-  ],
+  nav:{
+    firstName: "JOHN",
+    lastName: "DOE",
+    links: [
+      { name: "About", href: "/about" },
+      { name: "Articles", href: "/articles" },
+      { name: "Projects", href: "/projects" },
+      { name: "Talks", href: "/talks" },
+    ],
+    contact:{text:"Contact Me", link:"tel: +15551234567"}
+},
+about:{
+  img: "images/uifaces-popular-image.jpg",
+  name: "John",
+  description: "I help Startsups through fast-paced full stack software development"
+}
 };

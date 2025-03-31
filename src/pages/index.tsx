@@ -1,12 +1,18 @@
-import Image from "next/image";
-import localFont from "next/font/local";
 import { Button } from "@/components/ui/button";
-
+import { ArticleMetadata, getAllArticles } from "@/lib/articles";
+import ArticleCard from "@/components/portfolio/ArticleCard";
+import { GetStaticProps } from "next";
 import { useSiteConfig } from "@/lib/useSiteConfig";
 import { useEffect } from "react";
+import { Nav } from "@/components/portfolio/Nav";
+import { About } from "@/components/portfolio/About";
 
-export default function Home() {
-  const { name } = useSiteConfig();
+interface HomeProps {
+  articles: ArticleMetadata[];
+}
+
+export default function Home({ articles }: HomeProps) {
+  const { nav, about } = useSiteConfig();
 
   useEffect(() => {
     fetch("https://api.github.com/users/amezng/repos", {
@@ -22,8 +28,19 @@ export default function Home() {
 
   return (
     <>
-      <Button>Hello {name}</Button>
-      <h1 className="m-auto w-24">Hello {name}</h1>
+      <Nav firstName={nav.firstName} lastName={nav.lastName} links={nav.links} contact={nav.contact}/>
+      <About name={about.name} description={about.description} img={about.img}/>
+      {/* <ArticleCard articles={articles} /> */}
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const articles = getAllArticles();
+  console.log(articles);
+  return {
+    props: {
+      articles,
+    },
+  };
+};
