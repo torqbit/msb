@@ -35,7 +35,25 @@ export default function Home({ articles }: HomeProps) {
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const articles = getAllArticles();
-  console.log(articles);
+  const projectsResponse = await fetch(
+    "https://api.github.com/users/amezng/repos",
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        Accept: "application/vnd.github.v3+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+      },
+    }
+  );
+  const githubJson = await projectsResponse.json();
+  const data = githubJson.map((project: any) => {
+    return {
+      name: project.name,
+      link: project.html_url,
+      description: project.description,
+    };
+  });
+
   return {
     props: {
       articles,
