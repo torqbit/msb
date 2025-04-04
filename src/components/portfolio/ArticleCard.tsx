@@ -4,32 +4,33 @@ import { FC } from "react";
 
 const ArticleCard: FC<{ articles: ArticleMetadata[] }> = ({ articles }) => {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8">Articles</h1>
+    <section id="articles" className="w-full max-w-[900px] mx-auto my-12">
+      <p className="text-[20px]  mb-8 text-white">Articles</p>
+      <hr className="border-[#2d2d36b4] border w-full mb-8"/>
       <div className="space-y-8">
         {articles.map((post) => (
-          <article key={post.slug} className="border rounded-lg p-6">
+          <article key={post.slug} className="w-full h-[auto] flex flex-col bg-[#252535] rounded-lg gap-[15px] pb-6 ">
             <Link href={`/posts/${post.slug}`}>
-              <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
+              <h2 className="text-2xl font-semibold mb-2 px-3 text-white mt-3">{post.title}</h2>
             </Link>
-            <p className="text-gray-600 mb-2">{post.description}</p>
-            <div className="flex gap-2">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-sm"
-                >
-                  {tag}
-                </span>
-              ))}
+            <p className="text-sm text-gray-400 mt-0 px-3">{post.description}</p>
+            <div className="flex gap-5 px-3">
+                {post.tags?.map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-gray-100 text-gray-800 px-2 py-1 rounded-[5px] text-sm "
+                  >
+                    {tag}
+                  </span>
+                ))}
             </div>
-            <time className="text-sm text-gray-500 mt-2 block">
+            <time className="	m-0 text-xs text-gray-400 px-3">
               {post.date}
             </time>
           </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
