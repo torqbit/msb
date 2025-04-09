@@ -9,7 +9,7 @@ const ArticleCard: FC<{ articles: ArticleMetadata[] }> = ({ articles }) => {
       <hr className="border-[#2d2d36b4] border w-full mb-8"/>
       <div className="space-y-8">
         {articles.map((post) => (
-          <article key={post.slug} className="w-full h-[auto] flex flex-col bg-[#252535] rounded-lg gap-[15px] pb-6 ">
+          <article key={post.slug} className="w-full h-[auto] grid grid-cols-2 gap-6 p-4 bg-[#252535] rounded-lg gap-[15px] pb-6 ">
             <Link href={`/posts/${post.slug}`}>
               <h2 className="text-2xl font-semibold mb-2 px-3 text-white mt-3">{post.title}</h2>
             </Link>
