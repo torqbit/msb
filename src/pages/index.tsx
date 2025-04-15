@@ -15,48 +15,62 @@ interface HomeProps {
   projects: ProjectMetaData[];
 }
 
-export default function Home({ articles , projects}: HomeProps) {
-  const { nav, about, talks, footer} = useSiteConfig();
+export default function Home({ articles, projects }: HomeProps) {
+  const { nav, about, talks, footer } = useSiteConfig();
 
-  const typedContact = nav.contact as Contact
-
+  const typedContact = nav.contact as Contact;
 
   return (
     <div className="min-h-screen bg-black border">
-      <Nav firstName={nav.firstName} lastName={nav.lastName} links={nav.links} contact={typedContact}/>
-      <About name={about.name} description={about.description} img={about.img}/>
+      <Nav
+        firstName={nav.firstName}
+        lastName={nav.lastName}
+        links={nav.links}
+        contact={typedContact}
+      />
+      <About
+        name={about.name}
+        description={about.description}
+        img={about.img}
+      />
       <ArticleCard articles={articles} />
-      <ProjectsCard projects={projects}/>
-      <TalkCard talks={talks}/>
-      <Footer  year={footer.year} name={footer.name}/>
+      <ProjectsCard projects={projects} />
+      {/* <TalkCard talks={talks} /> */}
+      <Footer year={footer.year} name={footer.name} />
     </div>
   );
 }
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const articles = getAllArticles();
+  const { social } = useSiteConfig();
 
-  const projectResponse= await  fetch("https://api.github.com/users/aisha-agarwal00/repos",{
-    headers: {
-      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-      Accept: "application/vnd.github.v3+json",
-      "X-GitHub-Api-Version": "2022-11-28",
-    },
-  })
-  const projectJson = await projectResponse.json()
-  const projects: ProjectMetaData[]= projectJson.map((res: any)=>{
+  console.log("github token", process.env.GH_TOKEN);
+
+  const projectResponse = await fetch(
+    `https://api.github.com/users/${social.github}/repos`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.GH_TOKEN}`,
+        Accept: "application/vnd.github.v3+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+      },
+    }
+  );
+  const projectJson = await projectResponse.json();
+  const projects: ProjectMetaData[] = projectJson.map((res: any) => {
+    console.log(res);
     return {
       title: res.name,
       description: res.description,
-      link: res.html_url
-    }
+      link: res.html_url,
+    };
   });
-
 
   return {
     props: {
       articles,
-      projects
+      projects,
     },
   };
 };

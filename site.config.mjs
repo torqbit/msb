@@ -1,37 +1,17 @@
-
 export const siteConfig = {
   name: "My Site",
   description: "Welcome to my website",
   url: "https://mysite.com",
   // Add any other site-wide configuration values you need
   social: {
-    twitter: "https://twitter.com/username",
-    github: "https://github.com/aisha",
+    twitter: "JohnDoe",
+    github: "torqbit",
   },
   talks: [
-    {
-      title: "Designing Intuitive User Interfaces",
-    description: "Explored key principles of UI/UX design, accessibility, and how to create interfaces that truly delight users.",
-    videoUrl: "https://www.youtube.com/embed/78hZ2u0n5FQ",
-    date: "February 12, 2025",
-    speaker: "Aisha Agarwal",
-  },
-  {
-    title: "Demystifying React Performance",
-    description: "Dived deep into React performance optimization using memoization, lazy loading, and re-render strategies.",
-    videoUrl: "https://www.youtube.com/embed/0ZJgIjIuY7U",
-    date: "March 5, 2025",
-    speaker: "Aisha Agarwal",
-  },
-  {
-    title: "Next.js for Beginners: SSR & SSG Explained",
-    description: "An introductory session on the power of Next.js, breaking down server-side rendering and static generation with real examples.",
-    videoUrl: "https://www.youtube.com/embed/I2UBjN5ER4s",
-    date: "March 20, 2025",
-    speaker: "Aisha Agarwal",
-  },
+    "https://www.youtube.com/watch?v=jN0kB85rxGg",
+    "https://www.youtube.com/watch?v=eMFKqcYQQFk",
   ],
-  nav:{
+  nav: {
     firstName: "BELLA",
     lastName: "DOE",
     links: [
@@ -40,15 +20,20 @@ export const siteConfig = {
       { name: "Projects", href: "projects" },
       { name: "Talks", href: "talks" },
     ],
-    contact:{text:"Contact Me", value:"agarwalaisha2000@gmail.com", type:"email"}
-},
-about:{
-  img: "images/uifaces-popular-image.jpg",
-  name: "Bella",
-  description: "I help Startsups through fast-paced full stack software development"
-},
-footer:{
-  year: 2025,
-  name:"Bella Doe",
-}
+    contact: {
+      text: "Contact Me",
+      value: "agarwalaisha2000@gmail.com",
+      type: "email",
+    },
+  },
+  about: {
+    img: "images/uifaces-popular-image.jpg",
+    name: "Bella",
+    description:
+      "I help Startsups through fast-paced full stack software development",
+  },
+  footer: {
+    year: 2025,
+    name: "Bella Doe",
+  },
 };
