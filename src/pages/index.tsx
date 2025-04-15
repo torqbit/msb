@@ -35,6 +35,7 @@ export default function Home({ articles , projects}: HomeProps) {
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const articles = getAllArticles();
+
   const projectResponse= await  fetch("https://api.github.com/users/aisha-agarwal00/repos",{
     headers: {
       Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
@@ -51,7 +52,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     }
   });
 
-  //console.log(projectDisplay)
+
   return {
     props: {
       articles,
