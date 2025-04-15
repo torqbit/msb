@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
+//To get the complete path
 const postsDirectory = path.join(process.cwd(), "src/pages/posts");
 
 export interface ArticleMetadata {
@@ -13,6 +14,7 @@ export interface ArticleMetadata {
 }
 
 export function getAllArticles(): ArticleMetadata[] {
+
   const fileNames = fs.readdirSync(postsDirectory);
 
   const allArticlesData = fileNames

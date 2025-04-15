@@ -1,62 +1,62 @@
-import { Button } from "@/components/ui/button";
 import { ArticleMetadata, getAllArticles } from "@/lib/articles";
 import ArticleCard from "@/components/portfolio/ArticleCard";
 import { GetStaticProps } from "next";
 import { useSiteConfig } from "@/lib/useSiteConfig";
-import { useEffect } from "react";
+import { Nav } from "@/components/portfolio/Nav";
+import { Contact } from "@/components/portfolio/Nav";
+import { About } from "@/components/portfolio/About";
+import { ProjectsCard } from "@/components/portfolio/projectsCard";
+import { ProjectMetaData } from "@/components/portfolio/projectsCard";
+import { TalkCard } from "@/components/portfolio/talk";
+import Footer from "@/components/portfolio/footer";
 
 interface HomeProps {
   articles: ArticleMetadata[];
+  projects: ProjectMetaData[];
 }
 
-export default function Home({ articles }: HomeProps) {
-  const { name } = useSiteConfig();
+export default function Home({ articles , projects}: HomeProps) {
+  const { nav, about, talks, footer} = useSiteConfig();
 
-  useEffect(() => {
-    fetch("https://api.github.com/users/amezng/repos", {
-      headers: {
-        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        Accept: "application/vnd.github.v3+json",
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, []);
+  const typedContact = nav.contact as Contact
+
 
   return (
-    <>
-      <Button>Hello {name}</Button>
-      <h1 className="m-auto w-24">Hello {name}</h1>
+    <div className="min-h-screen bg-black border">
+      <Nav firstName={nav.firstName} lastName={nav.lastName} links={nav.links} contact={typedContact}/>
+      <About name={about.name} description={about.description} img={about.img}/>
       <ArticleCard articles={articles} />
-    </>
+      <ProjectsCard projects={projects}/>
+      <TalkCard talks={talks}/>
+      <Footer  year={footer.year} name={footer.name}/>
+    </div>
   );
 }
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const articles = getAllArticles();
-  const projectsResponse = await fetch(
-    "https://api.github.com/users/amezng/repos",
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        Accept: "application/vnd.github.v3+json",
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
-    }
-  );
-  const githubJson = await projectsResponse.json();
-  const data = githubJson.map((project: any) => {
+
+  const projectResponse= await  fetch("https://api.github.com/users/aisha-agarwal00/repos",{
+    headers: {
+      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      Accept: "application/vnd.github.v3+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+  })
+  const projectJson = await projectResponse.json()
+  const projects: ProjectMetaData[]= projectJson.map((res: any)=>{
     return {
-      name: project.name,
-      link: project.html_url,
-      description: project.description,
-    };
+      title: res.name,
+      description: res.description,
+      link: res.html_url
+    }
   });
+
 
   return {
     props: {
       articles,
+      projects
     },
   };
 };
