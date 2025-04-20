@@ -6,6 +6,7 @@ import matter from "gray-matter";
 const postsDirectory = path.join(process.cwd(), "src/pages/posts");
 
 export interface ArticleMetadata {
+  thumbnail:string;
   title: string;
   date: string;
   description: string;

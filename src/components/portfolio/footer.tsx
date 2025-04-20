@@ -7,18 +7,18 @@ type FooterProps = {
 
   const Footer: React.FC<FooterProps> = ({year, name}) => {
   return (
-    <footer className="w-[900px] mx-auto mt-[70px] max-[430px]:w-[100vw]">
-      <hr className="m-0 border border-[#2d2d36b4] max-[430px]:w-[90vw] max-[430px]:mx-auto max-[430px]:my-2" />
-      <div className="flex flex-row justify-between text-[#bdd4cfde] text-[15px] max-[430px]:justify-center max-[430px]:pb-[60px] max-[430px]:text-[17px] mt-[10px] mb-[10px]">
+    <footer className="w-[900px] mx-auto mt-[70px] max-[431px]:w-[100vw]">
+      <hr className="m-0 border border-[#2d2d36b4] max-[431px]:mx-[10px] max-[431px]:my-2" />
+      <div className="flex flex-row justify-between text-[#bdd4cfde] text-[15px] max-[431px]:justify-center max-[431px]:pb-[60px] max-[431px]:text-[17px] mt-[10px] mb-[10px]">
         <p>Copyright {year} {name}</p>
-        <div className="flex gap-[30px] max-[430px]:hidden">
+        <div className="flex gap-[30px] max-[431px]:hidden">
           <p className="cursor-pointer">About</p>
           <p className="cursor-pointer">Articles</p>
           <p className="cursor-pointer">Projects</p>
           <p className="cursor-pointer">Talks</p>
         </div>
       </div>
-      <div className="hidden fixed bottom-0 w-screen justify-evenly items-center p-2 bg-[#2b2b40] max-[430px]:flex">
+      <div className="hidden fixed bottom-0 w-screen justify-evenly items-center p-2 bg-[#2b2b40] max-[431px]:flex">
           <a href="#about"  className="flex flex-col items-center">
             <i>
               <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

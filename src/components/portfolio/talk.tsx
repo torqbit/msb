@@ -1,58 +1,62 @@
 import React from "react";
+import HeroVideoDialog from "@/components/magicui/hero-video-dialog";
+
+
+const extractVideoId = (youtubeUrl: string) => {
+  let videoId = "";
+
+  if (youtubeUrl.includes("youtube.com/watch?v=")) {
+    videoId = youtubeUrl.split("v=")[1];
+  } else if (youtubeUrl.includes("youtu.be/")) {
+    videoId = youtubeUrl.split("youtu.be/")[1];
+  }
+
+  return (
+    videoId? `https://www.youtube.com/embed/${videoId}`: ""
+  );
+};
+
+const extractThumbnail = (youtubeUrl: string) => {
+  let videoId = "";
+
+  if (youtubeUrl.includes("youtube.com/watch?v=")) {
+    videoId = youtubeUrl.split("v=")[1];
+  } else if (youtubeUrl.includes("youtu.be/")) {
+    videoId = youtubeUrl.split("youtu.be/")[1];
+  }
+
+  return (
+    videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : ""
+  );
+};
+
 
 export type Talk = {
-  title: string;
-  description: string;
   videoUrl: string;
-  date?: string;
-  speaker?: string;
 };
 
 export const TalkCard: React.FC<{ talks: Talk[] }> = ({ talks }) => {
-    return (
-      <section id="talks" className="w-full max-w-[900px] mx-auto my-[50px] px-4">
-        <p className="text-[20px] mb-8 text-white">Talks</p>
-        <hr className="border-[#2d2d36b4] border w-full mb-10" />
   
-        <div className="grid grid-cols-1 xs:grid-cols-3 gap-8 w-full max-w-[900px] mx-auto">
-          {talks.map((talk, index) => (
-            <div
-              key={index}
-              className="w-full h-auto bg-[#2b2b40] text-white p-4 rounded-xl shadow-md flex flex-col justify-between"
-            >
-              <div>
-                <h2 className="text-lg font-semibold text-center underline">{talk.title}</h2>
-  
-                {talk.speaker && (
-                  <p className="text-sm mt-1 text-gray-300 text-center">
-                    <strong>Speaker:</strong> {talk.speaker}
-                  </p>
-                )}
-  
-                {talk.date && (
-                  <p className="text-sm text-gray-400 text-center">
-                    <strong>Date:</strong> {talk.date}
-                  </p>
-                )}
-  
-                <p className="text-sm text-gray-300 mt-2 text-center">
-                  {talk.description}
-                </p>
-              </div>
-  
-              <div className="w-full mt-4">
-                <iframe
-                  className="w-full h-24 rounded-md"
-                  src={talk.videoUrl}
-                  frameBorder="0"
-                  allow="autoplay; encrypted-media"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    );
-  };
-  
+  return (
+    <section
+      id="talks"
+      className="w-[900px] my-[50px] mx-auto max-[431px]:w-full max-[431px]:px-4"
+    >
+      <p className="text-[20px] mb-8 text-white">Talks</p>
+      <hr className="border-[#2d2d36b4] border w-full mb-10" />
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-[900px] mx-auto">
+        {talks.map((talk, index) => (
+          <HeroVideoDialog
+            key={index}
+            className="block dark:hidden"
+            animationStyle="from-center"
+            videoSrc={extractVideoId(talk.videoUrl)}
+            thumbnailSrc={extractThumbnail(talk.videoUrl)}
+            thumbnailAlt="Dummy Video Thumbnail"
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
