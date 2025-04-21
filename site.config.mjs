@@ -8,8 +8,9 @@ export const siteConfig = {
     github: "torqbit",
   },
   talks: [
-    "https://www.youtube.com/watch?v=jN0kB85rxGg",
-    "https://www.youtube.com/watch?v=eMFKqcYQQFk",
+    {videoUrl:"https://www.youtube.com/watch?v=jN0kB85rxGg"},
+    {videoUrl:"https://www.youtube.com/watch?v=eMFKqcYQQFk"},
+    {videoUrl:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
   ],
   nav: {
     firstName: "BELLA",
