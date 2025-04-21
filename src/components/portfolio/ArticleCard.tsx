@@ -16,20 +16,19 @@ const ArticleCard: FC<{ articles: ArticleMetadata[] }> = ({ articles }) => {
                   <time className="	m-0 text-s text-white">{post.date}</time>
               </div>
             </div>
-            <Link href={`/posts/${post.slug}`}>
+            <div>
               <h2 className="text-m font-semibold px-3 text-white">{post.title}</h2>
-            </Link>
-            <p className="text-sm text-gray-400 m-0 px-3">{post.description}</p>
-            <div className="flex gap-5 px-3">
-                {post.tags?.map((tag) => (
-                  <span
-                    key={tag}
-                    className="bg-gray-100 text-gray-800 px-2 py-1 rounded-[5px] text-sm "
-                  >
-                    {tag}
-                  </span>
-                ))}
             </div>
+            <p className="text-sm text-gray-400 m-0 px-3">{post.description}</p>
+            <Link href={`/posts/${post.slug}`} className="flex gap-2 px-3 items-center">
+                <p className="text-white text-xs">Read Post</p>
+                <i className="text-white text-s">
+                   <svg  width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M9 4.5L16.5 12L9 19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                   </svg>
+                </i>
+            </Link>
           </article>
         ))}
       </div>
