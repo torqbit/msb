@@ -1,5 +1,5 @@
 ---
-thumbnail: "/images/art-of-debug.png"
+thumbnail: "/msb/images/art-of-debug.png"
 title: "Understanding React Context: A Complete Guide"
 date: "2024-01-10"
 description: "Learn how to effectively use React Context API for state management"
