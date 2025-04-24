@@ -117,6 +117,7 @@ Netlify: Easily deploy and configure your portfolio with Netlify.
 📫 Let’s Connect
 If you use this project, I’d love to see what you create!
 Feel free to connect with me on LinkedIn.
+www.linkedin.com/in/agarwalaisha2000
 
 
 🪪 License
