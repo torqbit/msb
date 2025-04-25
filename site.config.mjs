@@ -9,8 +9,8 @@ export const siteConfig = {
   },
   talks: [
     {videoUrl:"https://www.youtube.com/watch?v=jN0kB85rxGg"},
-    {videoUrl:"https://www.youtube.com/watch?v=eMFKqcYQQFk"},
-    {videoUrl:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
+    {videoUrl:"https://youtu.be/JKis86BlIlQ?si=aN1yNLuURwHYD969"},
+    {videoUrl:"https://youtu.be/7ARBJQn6QkM?si=fEt3n-8km7nqrTUy"},
   ],
   nav: {
     firstName: "BELLA",
