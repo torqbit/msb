@@ -1,5 +1,5 @@
 ---
-thumbnail: "/images/meetup.png"
+thumbnail: "/msb/images/meetup.png"
 title: "Understanding React's useEffect Hook: A Comprehensive Guide"
 date: "2024-01-10"
 author: "Trae AI"
