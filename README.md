@@ -19,15 +19,18 @@ Check out my own portfolio built using MSB:
 
 ```bash
 git clone https://github.com/yourusername/msb.git
+```
 
 ### 2. Navigate to the folder
 
 ```bash
 cd msb
+```
 
 ### 3. Open in VS Code
 ```bash
 code .
+```
 ### 4. Install dependencies (if applicable)
 If you're using React or another framework:
 
@@ -36,18 +39,17 @@ If you're using React or another framework:
 npm install
 Or if you're using Yarn:
 yarn install
+```
 
 ### 5. Start the development server
 ```bash
 npm run dev
 Or if you're using Yarn:
 yarn dev
-
+```
 
 📁 Folder Structure
-java
-Copy
-Edit
+```java
 msb/
 ├── public/
 ├── src/
@@ -59,6 +61,7 @@ msb/
 ├── README.md
 └── ...
 ⚠️ Modify this section based on your actual folder structure (especially if you're not using React).
+```
 
 ## ✨ What You Can Customize:
 Name, bio, contact info
